@@ -1101,114 +1101,210 @@
 /////////////////////////////////////////////////////////////////bottom sheet
 ///
 ///
+// import 'package:flutter/material.dart';
+// import 'package:flutter/src/material/date_picker.dart';
+
+// void main() => runApp(const RootApp());
+
+// class RootApp extends StatelessWidget {
+//   const RootApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: const MyHomePage(),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key});
+
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
+
+// class _MyHomePageState extends State<MyHomePage> {
+//   DateTime selectedDate = DateTime.now();
+
+//   selectedDateFunc(BuildContext context) async {
+//     final DateTime? picked = await showDatePicker(
+//       initialDatePickerMode: DatePickerMode.day,
+//       // helpText: "",
+//       // cancelText: "",
+//       // confirmText: "",
+//       context: context,
+//       initialDate: selectedDate,
+//       firstDate: DateTime(2000),
+//       lastDate: DateTime(2026), // ✅ allows full year
+//     );
+
+//     if (picked != null && picked != selectedDate) {
+//       setState(() {
+//         selectedDate = picked;
+//       });
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Sample', style: TextStyle(color: Colors.white)),
+//         backgroundColor: Colors.black,
+//         actions: [
+//           PopupMenuButton(
+//             color: Colors.blueGrey[50],
+//             itemBuilder: (BuildContext context) {
+//               return [
+//                 PopupMenuItem(value: "/chat", child: Text("chat")),
+//                 PopupMenuItem(value: "/about", child: Text("about us")),
+//                 PopupMenuItem(value: "/contact", child: Text("contact us")),
+//               ];
+//             },
+//           ),
+//         ],
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Center(
+//               child: ElevatedButton(
+//                 onPressed: () {
+//                   // showModalBottomSheet<void>(
+//                   //   isDismissible: false,
+//                   //   context: context,
+//                   //   builder: (BuildContext context) {
+//                   //     return Container(
+//                   //       height: 200,
+//                   //       color: Colors.blueGrey[50],
+//                   //       child: const Center(
+//                   //         child: Text("hello how is it going dude??"),
+//                   //       ),
+//                   //     );
+//                   //   },
+//                   // );
+//                   //////////////////////////////////////////date picker
+//                   // selectedDateFunc(context);
+//                   ////////////////////////////////////////// alert dialog
+//                   showDialog(context: context, builder: (BuildContext context) {
+//                     return AlertDialog(
+//                       title: Text("alert dialog"),
+//                       content: Text("are you agree with this contract??"),
+//                       actions: [
+//                         TextButton(onPressed: (){}, child: Text("NO")),
+//                         TextButton(onPressed: (){}, child: Text("YES")),
+//                       ],
+//                     );
+//                   });
+//                 },
+//                 // child: const Text("open modal"),
+//                 // child: const Text("pick date"),
+//                 child: const Text("click me"),
+//               ),
+//             ),
+//             // Text("${selectedDate.toLocal()}".split(" ")[0])
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+///////////////////////////////////////////////////// media query
+///
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+
+// void main() {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(title: Text("media")),
+//         body: MyPage(),
+
+//         // final currentWidth = MediaQuery.of(context).size.width;
+
+//         // return Row(
+//         //   children: [
+//         //     // Container(
+//         //     //   color: Colors.amber,
+//         //     //   width: MediaQuery.of(context).size.width * 0.6,
+//         //     // ),
+//         //     // Container(
+//         //     //   color: Colors.blue,
+//         //     //   width: MediaQuery.of(context).size.width * 0.4,
+//         //     // )
+//         //     // Container(
+//         //     //   width: 100,
+//         //     //   color: currentWidth > 600 ? Colors.amberAccent : Colors.cyan,
+//         //     // ),
+//         //   ],
+//         // );
+//       ),
+//     );
+//   }
+// }
+
+// class MyPage extends StatelessWidget {
+//   const MyPage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final double shortestSide = MediaQuery.of(context).size.shortestSide;
+//     final bool useMobileLayout = shortestSide < 600;
+
+//     gridViewForPhone() {
+//       return Padding(
+//         padding: EdgeInsets.all(5),
+//         child: GridView.count(
+//           crossAxisCount: 2,
+//           children: [
+//            Container(
+
+//            )
+//           ],
+//         ),
+//       );
+//     }
+
+//     ;
+//     return useMobileLayout
+//         ? gridViewForPhone()
+//         : Padding(padding: EdgeInsets.all(5));
+//   }
+// }
+
+////////////////////////////////////////////////////////////// routes na d navigations
+///
 import 'package:flutter/material.dart';
-import 'package:flutter/src/material/date_picker.dart';
+import 'package:flutter_application_1/routes/routes.dart';
+import 'package:flutter_application_1/screens/firstRoute.dart';
 
-void main() => runApp(const RootApp());
+void main() {
+  runApp(MyApp());
+}
 
-class RootApp extends StatelessWidget {
-  const RootApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  DateTime selectedDate = DateTime.now();
-
-  selectedDateFunc(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      initialDatePickerMode: DatePickerMode.day,
-      // helpText: "",
-      // cancelText: "",
-      // confirmText: "",
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2026), // ✅ allows full year
-    );
-
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sample', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.black,
-        actions: [
-          PopupMenuButton(
-            color: Colors.blueGrey[50],
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(value: "/chat", child: Text("chat")),
-                PopupMenuItem(value: "/about", child: Text("about us")),
-                PopupMenuItem(value: "/contact", child: Text("contact us")),
-              ];
-            },
-          ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // showModalBottomSheet<void>(
-                  //   isDismissible: false,
-                  //   context: context,
-                  //   builder: (BuildContext context) {
-                  //     return Container(
-                  //       height: 200,
-                  //       color: Colors.blueGrey[50],
-                  //       child: const Center(
-                  //         child: Text("hello how is it going dude??"),
-                  //       ),
-                  //     );
-                  //   },
-                  // );
-                  //////////////////////////////////////////date picker
-                  // selectedDateFunc(context);
-                  ////////////////////////////////////////// alert dialog
-                  showDialog(context: context, builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text("alert dialog"),
-                      content: Text("are you agree with this contract??"),
-                      actions: [
-                        TextButton(onPressed: (){}, child: Text("NO")),
-                        TextButton(onPressed: (){}, child: Text("YES")),
-                      ],
-                    );
-                  });
-                },
-                // child: const Text("open modal"),
-                // child: const Text("pick date"),
-                child: const Text("click me"),
-              ),
-            ),
-            // Text("${selectedDate.toLocal()}".split(" ")[0])
-          ],
-        ),
-      ),
+      // home: FirstRoute(),
+      initialRoute: Firstroute.routeName,
+      routes: routes,
     );
   }
 }
