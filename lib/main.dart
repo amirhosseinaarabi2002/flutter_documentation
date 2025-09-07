@@ -396,6 +396,8 @@
 //   child: Text(title, style: TextStyle(fontSize: 20)),
 // );
 
+import 'package:flutter/material.dart';
+
 ////////////////////////////////////////////////////////////////////////////////////////////// form
 ///
 // void main() => runApp(MyApp());
@@ -1288,13 +1290,143 @@
 
 ////////////////////////////////////////////////////////////// routes na d navigations
 ///
-import 'package:flutter/material.dart';
-import 'package:flutter_application_1/routes/routes.dart';
-import 'package:flutter_application_1/screens/firstRoute.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_application_1/routes/routes.dart';
+// import 'package:flutter_application_1/screens/firstRoute.dart';
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       // home: FirstRoute(),
+//       initialRoute: Firstroute.routeName,
+//       routes: routes,
+//     );
+//   }
+// }
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         // body: CustomScrollView(
+//         //   slivers: [
+//         //     SliverAppBar(
+//         //       expandedHeight: 80,
+//         //       title: Text("dobrov"),
+//         //       leading: Icon(Icons.icecream_outlined),
+//         //       flexibleSpace: FlexibleSpaceBar(
+//         //         background: Image.asset(
+//         //           "assets/images/moon.png",
+//         //           fit: BoxFit.cover,
+//         //         ),
+//         //       ),
+//         //       pinned: true,
+//         //       snap: true,
+//         //       floating: true,
+//         //     ),
+
+//         // SliverList(
+//         //   delegate: SliverChildBuilderDelegate(
+//         //     (context, index) => Padding(
+//         //       padding: EdgeInsets.all(8),
+//         //       child: Container(
+//         //         color: Colors.amber,
+//         //         height: 100,
+//         //         alignment: Alignment.center,
+//         //         child: Text("data", style: TextStyle(color: Colors.white)),
+//         //       ),
+//         //     ),
+//         //     childCount: 20
+//         //   ),
+//         // ),
+//         // SliverGrid(
+//         //   delegate: SliverChildBuilderDelegate((
+//         //     BuildContext context,
+//         //     int index,
+//         //   ) {
+//         //     return Container(
+//         //       alignment: Alignment.center,
+//         //       color: Colors.blueAccent,
+//         //       child: Text("data"),
+//         //     );
+//         //   }),
+//         //   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+//         //     maxCrossAxisExtent: 100,
+//         //     mainAxisExtent: 250,
+//         //     childAspectRatio: 0.5,
+//         //     mainAxisSpacing: 20
+//         //   ),
+//         // ),
+
+//         // ],
+//         // ),
+//         appBar: AppBar(title: Text("data")),
+//         body: MyGesture(),
+//       ),
+//     );
+//   }
+// }
+
+// class MyGesture extends StatefulWidget {
+//   const MyGesture({super.key});
+
+//   @override
+//   State<MyGesture> createState() => _MyGestureState();
+// }
+
+// class _MyGestureState extends State<MyGesture> {
+//   bool _light = false;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: [
+//           Padding(
+//             padding: EdgeInsets.all(8),
+//             child: Icon(
+//               Icons.lightbulb_outline,
+//               size: 60,
+
+//               color: _light ? Colors.yellow.shade600 : Colors.black,
+//             ),
+//           ),
+//           GestureDetector(
+//             onTap: () {
+//               setState(() {
+//                 if (_light) {
+//                   _light = false;
+//                 } else {
+//                   _light = true;
+//                 }
+//               });
+//             },
+//             child: Container(
+//               color: Colors.amber,
+//               child: Text("on"),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -1302,9 +1434,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // home: FirstRoute(),
-      initialRoute: Firstroute.routeName,
-      routes: routes,
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(title: Text("future"),backgroundColor: Colors.grey,),
+      ),
     );
   }
 }
