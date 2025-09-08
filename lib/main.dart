@@ -396,7 +396,11 @@
 //   child: Text(title, style: TextStyle(fontSize: 20)),
 // );
 
+import 'dart:ffi';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/interActiveViewer.dart';
 
 ////////////////////////////////////////////////////////////////////////////////////////////// form
 ///
@@ -1425,7 +1429,247 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
+//////////////////////////////////////////////////////////// future builder
 
+// void main() => runApp(MyApp());
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: Scaffold(
+//         appBar: AppBar(title: Text("future"), backgroundColor: Colors.grey),
+//         body: MyFuture(),
+//       ),
+//     );
+//   }
+// }
+
+// class MyFuture extends StatefulWidget {
+//   const MyFuture({super.key});
+
+//   @override
+//   State<MyFuture> createState() => _MyFutureState();
+// }
+
+// class _MyFutureState extends State<MyFuture> {
+//   final Future<String> _calculation = Future.delayed(
+//     Duration(seconds: 2),
+//     () => "data loaded",
+//   );
+
+//   FutureBuilder<String> _buildFuture() {
+//     return FutureBuilder<String>(
+//       future: _calculation,
+//       builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+//         List<Widget> children;
+//         if (snapshot.hasData) {
+//           children = <Widget>[
+//             Icon(Icons.check_circle_outline, color: Colors.green, size: 60),
+//             Text("${snapshot.data}"),
+//           ];
+//         } else if (snapshot.hasError) {
+//           children = <Widget>[
+//             Icon(Icons.error_outline, color: Colors.red, size: 60),
+//             Text("${snapshot.error}"),
+//           ];
+//         } else {
+//           children = <Widget>[
+//             SizedBox(width: 60, height: 60, child: CircularProgressIndicator()),
+//             Text("wait for result"),
+//           ];
+//         }
+//         return Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: children,
+//           ),
+//         );
+//       },
+//     );
+//   }
+
+//   int _count = 0;
+
+//   Stream<int> _stopWatch() async* {
+//     while (true) {
+//       await Future.delayed(Duration(seconds: 1));
+//       yield _count++;
+//     }
+//   }
+
+//   Widget _buildStraem() {
+//     return Center(
+//       child: StreamBuilder(
+//         stream: _stopWatch(),
+//         builder: ((BuildContext context, AsyncSnapshot<int> snapshot) {
+//           if (snapshot.hasData) {
+//             return Text("${snapshot.data}");
+//           } else {
+//             return CircularProgressIndicator();
+//           }
+//         }),
+//       ),
+//     );
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [_buildFuture(), SizedBox(height: 60), _buildStraem()],
+//     );
+//   }
+// }
+
+////////////////////////////////////////////////////dismissible
+///
+// void main() => runApp(MyApp());
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: Scaffold(
+//         appBar: AppBar(title: Text("future"), backgroundColor: Colors.grey),
+//         body: MyDismiss(),
+//       ),
+//     );
+//   }
+// }
+
+// class MyDismiss extends StatefulWidget {
+//   const MyDismiss({super.key});
+
+//   @override
+//   State<MyDismiss> createState() => _MyDismissState();
+// }
+
+// class _MyDismissState extends State<MyDismiss> {
+//   final List items = List.generate(20, (i) {
+//     return "item ${i + 1}";
+//   });
+
+//   // final List<Item> items = List<Item>.generate(10, (i)=> Item("${i + 1}", uniqueColorGenerator.getColor()));
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView.separated(
+//       itemBuilder: (context, index) {
+//         final item = items[index];
+//         return Dismissible(
+//           // direction: DismissDirection.startToEnd,
+//           confirmDismiss: (direction) async {
+//             if (direction == DismissDirection.startToEnd) {
+//               return await showDialog(
+//                 context: context,
+//                 builder: (BuildContext context) {
+//                   return AlertDialog(
+//                     title: Text("delete confirmation"),
+//                     content: Text("are you sure you want to delete it?"),
+//                     actions: [
+//                       ElevatedButton(
+//                         onPressed: () {
+//                           Navigator.of(context).pop(true);
+//                         },
+//                         child: Text("delete"),
+//                       ),
+//                       ElevatedButton(
+//                         onPressed: () {
+//                           Navigator.of(context).pop(false);
+//                         },
+//                         child: Text("cancel"),
+//                       ),
+//                     ],
+//                   );
+//                 },
+//               );
+//             } else {
+//               print("called");
+//             }
+//           },
+
+//           background: Container(
+//             color: Colors.redAccent,
+//             child: Padding(
+//               padding: EdgeInsets.all(15),
+//               child: Row(
+//                 children: [
+//                   Icon(Icons.delete, color: Colors.white),
+//                   SizedBox(width: 2),
+//                   Text("move to trash", style: TextStyle(color: Colors.white)),
+//                 ],
+//               ),
+//             ),
+//           ),
+
+//           secondaryBackground: Container(
+//             color: Colors.greenAccent,
+//             child: Padding(
+//               padding: EdgeInsets.all(15),
+//               child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.end,
+//                 children: [
+//                   Icon(Icons.call, color: Colors.white),
+//                   SizedBox(width: 2),
+//                   Text("call", style: TextStyle(color: Colors.white)),
+//                 ],
+//               ),
+//             ),
+//           ),
+
+//           onDismissed: (direction) {
+//             if (direction == DismissDirection.startToEnd) {
+//               setState(() {
+//                 items.removeAt(index);
+//               });
+//             } else {}
+//           },
+//           key: Key(item),
+//           child: Container(
+//             height: 90,
+//             alignment: Alignment.center,
+//             color: uniqueColorGenerator.getColor(item),
+//             child: Padding(padding: EdgeInsets.all(12), child: Text(item)),
+//           ),
+//         );
+//       },
+//       separatorBuilder: (BuildContext context, int index) =>
+//           Divider(height: 10),
+//       itemCount: items.length,
+//     );
+//   }
+// }
+
+// // class Item {
+// //    final String text;
+// //    final Color color;
+
+// //   Item(this.text, this.color)
+// // }
+
+// // ignore: camel_case_types
+// class uniqueColorGenerator {
+//   // static Random rnd = Random();
+//   static Color getColor(String item) {
+//     final Random rnd = Random(item.hashCode);
+//     return Color.fromARGB(
+//       255,
+//       rnd.nextInt(255),
+//       rnd.nextInt(255),
+//       rnd.nextInt(255),
+//     );
+//   }
+// }
+
+///////////////////////////////////////////////////////////draggable
+///
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -1436,8 +1680,220 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: Text("future"),backgroundColor: Colors.grey,),
+        appBar: AppBar(
+          title: Text("Drag"),
+          backgroundColor: Colors.deepOrangeAccent,
+        ),
+        body: MyClass(),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                child: Center(child: Text("drawer header")),
+                decoration: BoxDecoration(color: Colors.blueAccent),
+              ),
+              ListTile(title: Text("home"), trailing: Icon(Icons.home)),
+              ListTile(title: Text("work"), leading: Icon(Icons.work)),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
+
+// class MyDrag extends StatefulWidget {
+//   const MyDrag({super.key});
+
+//   @override
+//   State<MyDrag> createState() => _MyDragState();
+// }
+
+// class _MyDragState extends State<MyDrag> {
+//   bool accepted = false;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//       children: [
+//         Draggable(
+//           data: "flutter",
+//           feedback: FlutterLogo(size: 120),
+//           child: FlutterLogo(size: 100),
+//         ),
+//         DragTarget(
+//           builder: (context, candidateData, rejectedData) {
+//             return Center(
+
+//               child: accepted ? Container(
+//                 color: Colors.amber,
+//                 width: 200,
+//                 height: 200,
+//                 child: FlutterLogo(size: 100),
+//               ): Container(
+//                 color: Colors.amber,
+//                 width: 200,
+//                 height: 200,
+//                 // child: FlutterLogo(size: 100),
+//               ),
+//             );
+//           },
+//           onWillAccept: (data) => true,
+//           onAccept: (data) {
+//             setState(() {
+//               accepted = true;
+//             });
+//           },
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+// class MyDrag extends StatefulWidget {
+//   const MyDrag({super.key});
+
+//   @override
+//   State<MyDrag> createState() => _MyDragState();
+// }
+
+// class _MyDragState extends State<MyDrag> {
+//   void showSnackBar(String text, BuildContext context) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       SnackBar(content: Text(text), duration: Duration(seconds: 1)),
+//     );
+//   }
+
+//   resetGame() {
+//     setState(() {
+//       i = 0;
+//       numberList = uniqueNumberGenerator.getNumber();
+//       wrongMoves = 0;
+//     });
+//   }
+
+//   List numberList = uniqueNumberGenerator.getNumber();
+//   int i = 0;
+
+//   late int listLength = numberList.length;
+
+//   int wrongMoves = 0;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//       children: [
+//         Container(child: Text("wrong moves: $wrongMoves")),
+//         Draggable(
+//           data: numberList[i],
+//           feedback: Opacity(
+//             opacity: 0.5,
+//             child: Container(color: Colors.redAccent, width: 100, height: 100),
+//           ),
+//           child: Container(
+//             color: Colors.redAccent,
+//             width: 100,
+//             height: 100,
+//             alignment: Alignment.center,
+//             child: Text(
+//               numberList[i].toString(),
+//               style: TextStyle(color: Colors.white, fontSize: 20),
+//             ),
+//           ),
+//         ),
+
+//         Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+//           children: [
+//             DragTarget(
+//               builder:
+//                   (
+//                     BuildContext context,
+//                     List<Object?> candidateData,
+//                     List<dynamic> rejectedData,
+//                   ) {
+//                     return Container(
+//                       color: Colors.blueGrey,
+//                       width: 100,
+//                       height: 100,
+//                       alignment: Alignment.center,
+//                       child: Text(
+//                         "ODD",
+//                         style: TextStyle(color: Colors.white, fontSize: 20),
+//                       ),
+//                     );
+//                   },
+//               onWillAccept: (data) {
+//                 return true;
+//               },
+//               onAccept: (int data) {
+//                 if (data % 2 == 0) {
+//                   showSnackBar("wrong!", context);
+//                   setState(() {
+//                     wrongMoves += 1;
+//                   });
+//                 } else {
+//                   showSnackBar("correct", context);
+//                   setState(() {
+//                     i++;
+//                     if (listLength <= i) {
+//                       i = 0;
+//                     }
+//                   });
+//                 }
+//               },
+//             ),
+//             DragTarget(
+//               builder:
+//                   (
+//                     BuildContext context,
+//                     List<Object?> candidateData,
+//                     List<dynamic> rejectedData,
+//                   ) {
+//                     return Container(
+//                       color: Colors.greenAccent,
+//                       width: 100,
+//                       height: 100,
+//                       alignment: Alignment.center,
+//                       child: Text(
+//                         "EVEN",
+//                         style: TextStyle(color: Colors.white, fontSize: 20),
+//                       ),
+//                     );
+//                   },
+//               onWillAccept: (data) {
+//                 return true;
+//               },
+//               onAccept: (int data) {
+//                 if (data % 2 == 0) {
+//                   showSnackBar("correct", context);
+//                   setState(() {
+//                     i++;
+//                     if (listLength <= i) {
+//                       i = 0;
+//                     }
+//                   });
+//                 } else {
+//                   showSnackBar("wrong!", context);
+//                   setState(() {
+//                     wrongMoves += 1;
+//                   });
+//                 }
+//               },
+//             ),
+//           ],
+//         ),
+//         TextButton(onPressed: resetGame, child: Text("reset game")),
+//       ],
+//     );
+//   }
+// }
+
+// class uniqueNumberGenerator {
+//   static Random random = Random();
+//   static List getNumber() {
+//     return List.generate(4, (index) => random.nextInt(100));
+//   }
+// }
