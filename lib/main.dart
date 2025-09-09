@@ -396,11 +396,19 @@
 //   child: Text(title, style: TextStyle(fontSize: 20)),
 // );
 
-import 'dart:ffi';
-import 'dart:math';
+// import 'dart:ffi';
+// import 'dart:math';
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_application_1/pages/interActiveViewer.dart';
+// import 'package:flutter_application_1/pages/tabbar.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/interActiveViewer.dart';
+import 'package:flutter_application_1/pages/progress.dart';
+// import 'package:flutter_application_1/pages/chip.dart';
+// import 'package:flutter_application_1/pages/card.dart';
+// import 'package:flutter_application_1/pages/chip.dart';
+// import 'package:flutter_application_1/pages/materialBanner.dart';
 
 ////////////////////////////////////////////////////////////////////////////////////////////// form
 ///
@@ -1670,38 +1678,46 @@ import 'package:flutter_application_1/pages/interActiveViewer.dart';
 
 ///////////////////////////////////////////////////////////draggable
 ///
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Drag"),
-          backgroundColor: Colors.deepOrangeAccent,
-        ),
-        body: MyClass(),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                child: Center(child: Text("drawer header")),
-                decoration: BoxDecoration(color: Colors.blueAccent),
-              ),
-              ListTile(title: Text("home"), trailing: Icon(Icons.home)),
-              ListTile(title: Text("work"), leading: Icon(Icons.work)),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: MyTabBar(),
+      // home: Scaffold(
+      //   appBar: AppBar(
+      //     title: Text("Drag"),
+      //     backgroundColor: Colors.deepOrangeAccent,
+      //   ),
+      //   body: TabBarView(children: [
+      //     Icon(Icons.flight),
+      //     Icon(Icons.directions),
+      //     Icon(Icons.transit_enterexit),
+      //   ]),
+      //   // body: MyClass(),
+      //   bottomSheet: MyTabBar(),
+      //   drawer: Drawer(
+      //     child: ListView(
+      //       padding: EdgeInsets.zero,
+      //       children: [
+      //         DrawerHeader(
+      //           child: Center(child: Text("drawer header")),
+      //           decoration: BoxDecoration(color: Colors.blueAccent),
+      //         ),
+      //         ListTile(title: Text("home"), trailing: Icon(Icons.home)),
+      //         ListTile(title: Text("work"), leading: Icon(Icons.work)),
+      //       ],
+      //     ),
+      //   ),
+        
+      // ),
+//     );
+//   }
+// }
 
 // class MyDrag extends StatefulWidget {
 //   const MyDrag({super.key});
@@ -1897,3 +1913,26 @@ class MyApp extends StatelessWidget {
 //     return List.generate(4, (index) => random.nextInt(100));
 //   }
 // }
+
+
+///////////////////////////////////////////////material banner
+///
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("material banner"),
+          backgroundColor: Colors.blueAccent,
+        ),
+        // body: MyMaterialBanner(),
+        body: MyPage(),
+      ),
+    );
+  }
+}
