@@ -404,7 +404,10 @@
 // import 'package:flutter_application_1/pages/tabbar.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/progress.dart';
+import 'package:flutter_application_1/pages/stepper.dart';
+// import 'package:flutter_application_1/pages/table.dart';
+// import 'package:flutter_application_1/pages/materialproperty.dart';
+// import 'package:flutter_application_1/pages/progress.dart';
 // import 'package:flutter_application_1/pages/chip.dart';
 // import 'package:flutter_application_1/pages/card.dart';
 // import 'package:flutter_application_1/pages/chip.dart';
@@ -1688,33 +1691,33 @@ import 'package:flutter_application_1/pages/progress.dart';
 //     return MaterialApp(
 //       debugShowCheckedModeBanner: false,
 //       home: MyTabBar(),
-      // home: Scaffold(
-      //   appBar: AppBar(
-      //     title: Text("Drag"),
-      //     backgroundColor: Colors.deepOrangeAccent,
-      //   ),
-      //   body: TabBarView(children: [
-      //     Icon(Icons.flight),
-      //     Icon(Icons.directions),
-      //     Icon(Icons.transit_enterexit),
-      //   ]),
-      //   // body: MyClass(),
-      //   bottomSheet: MyTabBar(),
-      //   drawer: Drawer(
-      //     child: ListView(
-      //       padding: EdgeInsets.zero,
-      //       children: [
-      //         DrawerHeader(
-      //           child: Center(child: Text("drawer header")),
-      //           decoration: BoxDecoration(color: Colors.blueAccent),
-      //         ),
-      //         ListTile(title: Text("home"), trailing: Icon(Icons.home)),
-      //         ListTile(title: Text("work"), leading: Icon(Icons.work)),
-      //       ],
-      //     ),
-      //   ),
-        
-      // ),
+// home: Scaffold(
+//   appBar: AppBar(
+//     title: Text("Drag"),
+//     backgroundColor: Colors.deepOrangeAccent,
+//   ),
+//   body: TabBarView(children: [
+//     Icon(Icons.flight),
+//     Icon(Icons.directions),
+//     Icon(Icons.transit_enterexit),
+//   ]),
+//   // body: MyClass(),
+//   bottomSheet: MyTabBar(),
+//   drawer: Drawer(
+//     child: ListView(
+//       padding: EdgeInsets.zero,
+//       children: [
+//         DrawerHeader(
+//           child: Center(child: Text("drawer header")),
+//           decoration: BoxDecoration(color: Colors.blueAccent),
+//         ),
+//         ListTile(title: Text("home"), trailing: Icon(Icons.home)),
+//         ListTile(title: Text("work"), leading: Icon(Icons.work)),
+//       ],
+//     ),
+//   ),
+
+// ),
 //     );
 //   }
 // }
@@ -1914,7 +1917,6 @@ import 'package:flutter_application_1/pages/progress.dart';
 //   }
 // }
 
-
 ///////////////////////////////////////////////material banner
 ///
 void main() => runApp(MyApp());
@@ -1927,10 +1929,49 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("material banner"),
+          title: Text("course"),
           backgroundColor: Colors.blueAccent,
         ),
+
         // body: MyMaterialBanner(),
+        // body: MyPage(),
+        // body: Center(
+        //   child: Tooltip(
+        //     preferBelow: false,
+        //     message: "this is string",
+        //     decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.circular(20),
+        //       gradient: LinearGradient(
+        //         colors: [Colors.blueAccent, Colors.deepPurpleAccent],
+        //       ),
+        //     ),
+        //     child: Text("data"),
+        //   ),
+        // ),
+        // body: Column(
+        //   children: [
+        //     Expanded(
+        //       child: Container(
+        //         color: Colors.amberAccent,
+        //         child: Center(child: Text("data1")),
+        //       ),
+        //     ),
+        //     Divider(
+        //       height: 10,
+        //       thickness: 5,
+        //       indent: 20,
+        //       endIndent: 20,
+        //       color: Colors.redAccent,
+        //     ),
+        //     Expanded(
+        //       child: Container(
+        //         color: Colors.blueAccent,
+        //         child: Center(child: Text("data1")),
+        //       ),
+        //     ),
+        //   ],
+        // ),
+
         body: MyPage(),
       ),
     );
